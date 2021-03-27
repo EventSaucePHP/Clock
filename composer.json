@@ -1,0 +1,26 @@
+{
+    "name": "eventsauce/clock",
+    "type": "library",
+    "description": "Consume time from a Clock",
+    "keywords": ["clock", "time", "eventsauce"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Frank de Jonge",
+            "email": "info@frenky.net"
+        }
+    ],
+    "require": {
+        "php": "^8.0"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^0.12.82",
+        "phpunit/phpunit": "^9.4",
+        "friendsofphp/php-cs-fixer": "^2.18.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "EventSauce\\Clock\\": "src/"
+        }
+    }
+}
