@@ -82,6 +82,19 @@ class TestClockTest extends TestCase
     /**
      * @test
      */
+    public function fixating_the_clock_precisely(): void
+    {
+        $clock = new TestClock();
+        $clock->fixate('2017-01-01 12:00:00.121213', 'Y-m-d H:i:s.u');
+        $d1 = $clock->now();
+        $clock->fixate('2017-01-01 12:00:00.121212', 'Y-m-d H:i:s.u');
+        $d2 = $clock->now();
+        $this->assertTrue($d1 > $d2);
+    }
+
+    /**
+     * @test
+     */
     public function failing_to_fixate_the_clock(): void
     {
         $this->expectException(InvalidArgumentException::class);

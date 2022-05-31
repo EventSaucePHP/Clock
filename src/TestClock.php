@@ -29,10 +29,9 @@ class TestClock implements Clock
         $this->time = new DateTimeImmutable('now', $this->timeZone);
     }
 
-    public function fixate(string $input): void
+    public function fixate(string $input, string $format = '!Y-m-d H:i:s'): void
     {
-        $preciseTime = sprintf('%s.000000', $input);
-        $dateTime = DateTimeImmutable::createFromFormat('Y-m-d H:i:s.u', $preciseTime, $this->timeZone);
+        $dateTime = DateTimeImmutable::createFromFormat($format, $input, $this->timeZone);
 
         if ( ! $dateTime instanceof DateTimeImmutable) {
             throw new InvalidArgumentException("Invalid input for date/time fixation provided: {$input}");
