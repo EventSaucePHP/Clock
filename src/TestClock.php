@@ -29,7 +29,7 @@ class TestClock implements Clock
         $this->time = new DateTimeImmutable('now', $this->timeZone);
     }
 
-    public function fixate(string $input, $format = '!Y-m-d H:i:s'): void
+    public function fixate(string $input, string $format = '!Y-m-d H:i:s'): void
     {
         $dateTime = DateTimeImmutable::createFromFormat($format, $input, $this->timeZone);
 
