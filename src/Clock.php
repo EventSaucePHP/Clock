@@ -6,8 +6,9 @@ namespace EventSauce\Clock;
 
 use DateTimeImmutable;
 use DateTimeZone;
+use Psr\Clock\ClockInterface;
 
-interface Clock
+interface Clock extends ClockInterface
 {
     public function now(): DateTimeImmutable;
 
