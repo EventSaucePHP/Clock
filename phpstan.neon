@@ -2,8 +2,8 @@ parameters:
     level: max
     paths:
         - src
-    excludes_analyse:
-        - %rootDir%/../../../src/CodeGeneration/Fixtures/*
-        - %rootDir%/../../../src/LibraryConsumptionTests/*
-        - *Test.php
-    checkMissingIterableValueType: false
+    excludePaths:
+        analyse:
+            - %rootDir%/../../../src/CodeGeneration/Fixtures/*
+            - %rootDir%/../../../src/LibraryConsumptionTests/*
+            - *Test.php

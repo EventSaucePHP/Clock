@@ -18,13 +18,21 @@
         "psr/clock-implementation": "1.0"
     },
     "require-dev": {
-        "phpstan/phpstan": "^0.12.82",
-        "phpunit/phpunit": "^9.4",
-        "friendsofphp/php-cs-fixer": "^2.18.4"
+        "phpstan/phpstan": "^2.0",
+        "phpunit/phpunit": "^9.6",
+        "friendsofphp/php-cs-fixer": "^v3.65.0"
     },
     "autoload": {
         "psr-4": {
             "EventSauce\\Clock\\": "src/"
         }
+    },
+    "scripts": {
+        "phpunit": "phpunit",
+        "phpunit:coverage": "XDEBUG_MODE=coverage phpunit --verbose --coverage-text=coverage.clover",
+        "phpcs": "php-cs-fixer fix -v --dry-run --using-cache=no",
+        "phpcs:fix": "php-cs-fixer fix",
+        "phpstan": "phpstan analyze -c phpstan.neon",
+        "check" : ["@phpcs", "@phpstan", "@phpunit"]
     }
 }

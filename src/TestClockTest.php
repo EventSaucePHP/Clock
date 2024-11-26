@@ -4,11 +4,7 @@ declare(strict_types=1);
 
 namespace EventSauce\Clock;
 
-use DateInterval;
-use DateTimeZone;
-use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
-use function usleep;
 
 class TestClockTest extends TestCase
 {
@@ -30,7 +26,7 @@ class TestClockTest extends TestCase
     {
         $clock = new TestClock();
         $clock->fixate('2000-01-01 10:00:00');
-        $interval = new DateInterval('PT2H');
+        $interval = new \DateInterval('PT2H');
         $d1 = $clock->now();
         $clock->moveForward($interval);
         $d2 = $clock->now();
@@ -46,10 +42,10 @@ class TestClockTest extends TestCase
     public function it_exposes_a_timezone(): void
     {
         $clock = new TestClock();
-        $this->assertEquals(new DateTimeZone('UTC'), $clock->timeZone());
+        $this->assertEquals(new \DateTimeZone('UTC'), $clock->timeZone());
 
-        $clock = new TestClock(new DateTimeZone('Europe/Amsterdam'));
-        $this->assertEquals(new DateTimeZone('Europe/Amsterdam'), $clock->timeZone());
+        $clock = new TestClock(new \DateTimeZone('Europe/Amsterdam'));
+        $this->assertEquals(new \DateTimeZone('Europe/Amsterdam'), $clock->timeZone());
     }
 
     /**
@@ -59,7 +55,7 @@ class TestClockTest extends TestCase
     {
         $clock = new TestClock();
         $d1 = $clock->now();
-        usleep(1);
+        \usleep(1);
         $clock->tick();
         $d2 = $clock->now();
         $this->assertNotEquals($d1, $d2);
@@ -97,7 +93,7 @@ class TestClockTest extends TestCase
      */
     public function failing_to_fixate_the_clock(): void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
         $clock = new TestClock();
         $clock->fixate('sihvwshv oihacih ohaciohc');
     }

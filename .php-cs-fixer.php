@@ -1,10 +1,12 @@
 <?php
 
+use PhpCsFixer\Config;
+
 $finder = PhpCsFixer\Finder::create()
     ->exclude('CodeGeneration/Fixtures')
     ->in(__DIR__.'/src/');
 
-return PhpCsFixer\Config::create()
+return (new Config())
     ->setRules([
         '@Symfony' => true,
         'concat_space' => ['spacing' => 'one'],
