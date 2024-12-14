@@ -18,7 +18,7 @@ class TestClock implements Clock
     private DateTimeImmutable $time;
     private DateTimeZone $timeZone;
 
-    public function __construct(DateTimeZone $timeZone = null)
+    public function __construct(?DateTimeZone $timeZone = null)
     {
         $this->timeZone = $timeZone ?: new DateTimeZone('UTC');
         $this->tick();
