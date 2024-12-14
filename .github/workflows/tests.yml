@@ -31,13 +31,13 @@ jobs:
         run: composer update --${{ matrix.stability }} --prefer-dist --no-interaction --no-progress
 
       - name: Run PHP CS Fixer
-        run: vendor/bin/php-cs-fixer fix -v --dry-run --using-cache=no
+        run: composer phpcs
 
       - name: Run PHPStan
-        run: vendor/bin/phpstan analyze -c phpstan.neon
+        run: composer phpstan
 
       - name: Execute tests
-        run: vendor/bin/phpunit --verbose --coverage-text --coverage-clover=coverage.clover
+        run: composer phpunit:coverage
 
       - name: Code coverage
         if: ${{ github.ref == 'refs/heads/master' && matrix.php != 8.0 }}

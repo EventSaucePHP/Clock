@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace EventSauce\Clock;
 
-use DateTimeZone;
 use PHPUnit\Framework\TestCase;
-use function usleep;
 
 class SystemClockTest extends TestCase
 {
@@ -17,7 +15,7 @@ class SystemClockTest extends TestCase
     {
         $clock = new SystemClock();
         $d1 = $clock->now();
-        usleep(1);
+        \usleep(1);
         $d2 = $clock->now();
         $this->assertTrue($d1 < $d2);
     }
@@ -36,7 +34,7 @@ class SystemClockTest extends TestCase
      */
     public function setting_a_timezone_explicitly(): void
     {
-        $clock = new SystemClock(new DateTimeZone('Europe/Amsterdam'));
+        $clock = new SystemClock(new \DateTimeZone('Europe/Amsterdam'));
         $this->assertEquals('Europe/Amsterdam', $clock->timeZone()->getName());
     }
 }
